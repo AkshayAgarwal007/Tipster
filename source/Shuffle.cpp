@@ -5,31 +5,21 @@
 #include "Shuffle.h"
 
 
-void 
-Swap(int* a, int* b)
+int
+RandomGenerator(int i)
 {
-	int temp = *a;
-	*a = *b;
-	*b = temp;
-}
-
-
-void 
-Randomize(int* arr, int n)
-{
-	srand ( time(NULL) );
-
-	for(int i = n - 1; i > 0; i--) {
-		int j = rand() % (i+1);
-		Swap(&arr[i], &arr[j]);
-	}
+	return rand() % i;
 }
 
 
 void
-CreateRandomSeq(int* arr, int len)
+CreateRandomSeq(vector<int> &randomSeq, int len)
 {
+	srand(time(NULL));
+
 	for(int i = 0; i < len; ++i)
-		arr[i] = i;
-	Randomize(arr, len);
+		randomSeq.push_back(i);
+
+	random_shuffle(randomSeq.begin(), randomSeq.end());
+	random_shuffle(randomSeq.begin(), randomSeq.end(), RandomGenerator);
 }

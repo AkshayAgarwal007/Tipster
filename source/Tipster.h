@@ -14,6 +14,7 @@
 #include <String.h>
 #include <StringList.h>
 #include <TextView.h>
+#include <vector>
 
 
 class Tipster : public BGroupView
@@ -53,8 +54,8 @@ private:
 	BStringList 		fTipsList;
 	int32			fTipsLength;
 	int32			fTipIndex;
-	int 			fRandomSeq1[50];
-	int 			fRandomSeq2[50];
+	vector<int>		fRandomSeq1;
+	vector<int> 		fRandomSeq2;
 	
 	BString*		fPreviousTip;
 	BString*		fCurrentTip;

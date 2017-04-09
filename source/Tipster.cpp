@@ -289,6 +289,8 @@ Tipster::AddBeginningTip()
 	fTipsList.Remove(0);
 	fTipsLength = fTipsList.CountStrings();
 
+	fRandomSeq1.reserve(fTipsLength);
+	fRandomSeq2.reserve(fTipsLength);
 	CreateRandomSeq(fRandomSeq1, fTipsLength);
 	CreateRandomSeq(fRandomSeq2, fTipsLength);
 
@@ -406,9 +408,9 @@ Tipster::UpdateTip()
 	}
 
 	if (fTipIndex >= fTipsLength)
-		DisplayTip(new BString(fTipsList.StringAt(fRandomSeq2[fTipIndex % fTipsLength])));
+		DisplayTip(new BString(fTipsList.StringAt(fRandomSeq2.at(fTipIndex % fTipsLength))));
 	else
-		DisplayTip(new BString(fTipsList.StringAt(fRandomSeq1[fTipIndex])));
+		DisplayTip(new BString(fTipsList.StringAt(fRandomSeq1.at(fTipIndex))));
 	fTime = system_time();
 }
 
@@ -436,9 +438,9 @@ Tipster::DisplayPreviousTip()
 	if (fTipIndex-1 != -1) {
 		fTipIndex--;
 		if (fTipIndex >= fTipsLength)
-			DisplayTip(new BString(fTipsList.StringAt(fRandomSeq2[fTipIndex % fTipsLength])));
+			DisplayTip(new BString(fTipsList.StringAt(fRandomSeq2.at(fTipIndex % fTipsLength))));
 		else
-			DisplayTip(new BString(fTipsList.StringAt(fRandomSeq1[fTipIndex])));
+			DisplayTip(new BString(fTipsList.StringAt(fRandomSeq1.at(fTipIndex))));
 
 		fTime = system_time();
 	}
